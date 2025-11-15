@@ -1,0 +1,118 @@
+:root {
+    --menu-bg: rgba(10, 12, 22, 0.85);
+    --menu-border: rgba(148, 163, 184, 0.25);
+    --menu-text: #f8fafc;
+    --menu-muted: rgba(203, 213, 225, 0.85);
+    --menu-accent: #38bdf8;
+}
+
+.menu {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--menu-bg);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--menu-border);
+    box-shadow: 0 20px 45px rgba(2, 6, 23, 0.55);
+}
+
+.menu__inner {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0.65rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.menu__brand {
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--menu-text);
+}
+
+.menu__links {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.menu__link {
+    font-size: 0.95rem;
+    color: var(--menu-muted);
+    padding: 0.35rem 0.5rem;
+    border-radius: 999px;
+    transition: color 150ms ease, background-color 150ms ease;
+}
+
+.menu__link:hover,
+.menu__link.is-active {
+    color: var(--menu-text);
+    background: rgba(59, 130, 246, 0.12);
+}
+
+.menu__link--external::after {
+    content: '↗';
+    margin-left: 0.35rem;
+    font-size: 0.8rem;
+}
+
+.menu__toggle {
+    border: 1px solid var(--menu-border);
+    background: transparent;
+    color: var(--menu-text);
+    border-radius: 0.5rem;
+    padding: 0.4rem;
+    display: none;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.menu__toggle-bar {
+    width: 1.25rem;
+    height: 2px;
+    background: var(--menu-text);
+    display: block;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+@media (max-width: 768px) {
+    .menu__inner {
+        flex-wrap: wrap;
+    }
+
+    .menu__toggle {
+        display: inline-flex;
+        margin-left: auto;
+    }
+
+    .menu__links {
+        width: 100%;
+        flex-direction: column;
+        border-top: 1px solid var(--menu-border);
+        padding-top: 0.5rem;
+        display: none;
+    }
+
+    .menu.is-open .menu__links {
+        display: flex;
+    }
+
+    .menu__link {
+        width: 100%;
+        text-align: center;
+    }
+}

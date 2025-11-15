@@ -1,10 +1,17 @@
 import './style.css'
 import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
 import { setupCounter } from './counter.ts'
+import { mountMenu } from './menu/menu'
+
+mountMenu()
+
+const viteLogo = new URL(
+  `${import.meta.env.BASE_URL}vite.svg`,
+  window.location.origin
+).toString()
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
+  <main class="demo">
     <a href="https://vite.dev" target="_blank">
       <img src="${viteLogo}" class="logo" alt="Vite logo" />
     </a>
@@ -18,7 +25,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <p class="read-the-docs">
       Click on the Vite and TypeScript logos to learn more
     </p>
-  </div>
+  </main>
 `
 
 setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
